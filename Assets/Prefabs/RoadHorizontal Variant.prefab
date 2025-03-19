@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &848375432970859467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7272833298650928691, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_Name
+      value: RoadHorizontal Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.92084527
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 9.90621
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -37.86
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8045007792480242825, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 6100866790858989931, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+    - {fileID: 4359290741193166163, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8323733414429494143, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8815187883290455651}
+  m_SourcePrefab: {fileID: 100100000, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+--- !u!1 &8666578826215291060 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8323733414429494143, guid: cb4032da01b79394c9cd982cf6984c64, type: 3}
+  m_PrefabInstance: {fileID: 848375432970859467}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8815187883290455651
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666578826215291060}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.020000013, y: 0.02, z: 0.00095238077}
+  m_Center: {x: 0.010000019, y: -0.010000002, z: 0.00047619038}
