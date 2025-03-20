@@ -113,7 +113,7 @@ public class PlaneController : MonoBehaviour
                     targetRotation *= Quaternion.Euler(-90, 0, 0);
 
                     // Smoothly rotate towards the target rotation
-                    obj.transform.rotation = Quaternion.Slerp(obj.transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+                    obj.transform.rotation = Quaternion.Slerp(obj.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
                 }
 
 
