@@ -18,6 +18,18 @@ public class Plane : MonoBehaviour
             other.gameObject.CompareTag("Ground"))
         {
             uIManager.GameOver();
+            if (other.gameObject.CompareTag("Plane"))
+            {
+                Debug.Log("Collided with Plane");
+            }
+            else if (other.gameObject.CompareTag("Obstacle"))
+            {
+                Debug.Log("Collided with Obstacle");
+            }
+            else
+            {
+                Debug.Log("Collided with Ground");
+            }
         }
     }
 }
