@@ -3351,6 +3351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeController: {fileID: 700024542}
+  canvases:
+  - {fileID: 717980187}
   buttons:
   - {fileID: 814576188}
   stopWaypointIndices: 02000000
