@@ -20,9 +20,13 @@ public class ButtonWaypointAssigner : MonoBehaviour
         {
             int stopIndex = stopWaypointIndices[i];
             int targetIndex = targetWaypointIndices[i];
+            buttons[i].onClick.AddListener(() =>
+            {
+                planeController.ContinueMovement(stopIndex, targetIndex);
+                planeController.UpdateButtonStates();
+            });
 
-            // Assign a listener to the button
-            buttons[i].onClick.AddListener(() => planeController.ContinueMovement(stopIndex, targetIndex));
+            buttons[i].interactable = false;
         }
     }
 }
