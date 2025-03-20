@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ButtonWaypointAssigner : MonoBehaviour
 {
     public PlaneController planeController;
+    public Canvas[] canvases;
     public Button[] buttons;
     public int[] stopWaypointIndices;
     public int[] targetWaypointIndices;
@@ -26,7 +27,7 @@ public class ButtonWaypointAssigner : MonoBehaviour
                 planeController.UpdateButtonStates();
             });
 
-            buttons[i].interactable = false;
+            canvases[i].enabled = false;
         }
     }
 }

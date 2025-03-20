@@ -204,7 +204,7 @@ public class PlaneController : MonoBehaviour
                 }
             }
 
-            buttonWaypointAssigner.buttons[i].interactable = buttonEnabled;
+            buttonWaypointAssigner.canvases[i].enabled = buttonEnabled;
         }
     }
 }
