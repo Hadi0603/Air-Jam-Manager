@@ -187,23 +187,23 @@ public class PlaneController : MonoBehaviour
         }
     }
 
-    public void UpdateButtonStates()
+   public void UpdateButtonStates()
     {
         if (buttonWaypointAssigner == null) return;
 
         for (int i = 0; i < buttonWaypointAssigner.buttons.Length; i++)
         {
             bool buttonEnabled = false;
+            int stopIndex = buttonWaypointAssigner.stopWaypointIndices[i]; // Get the stop index for this button
+
             for (int j = 0; j < movingObjects.Length; j++)
             {
-                if (movingObjects[j] != null && isStopped[j] &&
-                    currentWaypointIndex[j] == buttonWaypointAssigner.stopWaypointIndices[i])
+                if (movingObjects[j] != null && isStopped[j] && currentWaypointIndex[j] == stopIndex)
                 {
                     buttonEnabled = true;
-                    break;
+                    break; // If any object is at the stop index, enable the button
                 }
             }
-
             buttonWaypointAssigner.buttons[i].interactable = buttonEnabled;
         }
     }
