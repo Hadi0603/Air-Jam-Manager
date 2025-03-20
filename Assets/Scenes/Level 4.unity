@@ -896,6 +896,7 @@ MonoBehaviour:
   frontDetectionAngle: 45
   startingWaypointIndices: 000000000000000000000000000000000000000000000000
   endingWaypointIndex: 05000000
+  buttonWaypointAssigner: {fileID: 849097826}
   uiManager: {fileID: 255223977}
 --- !u!4 &700024543
 Transform:
