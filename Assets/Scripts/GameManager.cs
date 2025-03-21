@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private GameObject pauseUI;
+    [SerializeField] private GameObject pauseBtn;
+    [SerializeField] UIManager uiManager;
     public static int levelToLoad;
     private void Start()
     {
@@ -18,9 +21,23 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
-    public void Restart()
+    public void Retry()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    public void Pause()
+    {
+        uiManager.OpenPauseMenu();
+    }
+
+    public void Resume()
+    {
+        uiManager.ClosePauseMenu();
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
     public void ClearBtn()
     {
