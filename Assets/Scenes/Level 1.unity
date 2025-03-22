@@ -1124,6 +1124,8 @@ MonoBehaviour:
   - {fileID: 581573511}
   moveSpeed: 6
   rotationSpeed: 5
+  speedMultiplier: 0.5
+  maxSpeed: 12
   stopWaypointIndices: 010000000a000000
   resetObjectsOnStart: 0
   flyingWaypoints: 
@@ -1602,7 +1604,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 733710dfc2db02f4495055cc480061b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3312acf3e3f7532418442aee0035d6c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3127,7 +3129,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 733710dfc2db02f4495055cc480061b2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3312acf3e3f7532418442aee0035d6c7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
