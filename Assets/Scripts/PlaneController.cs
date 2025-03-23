@@ -8,6 +8,8 @@ public class PlaneController : MonoBehaviour
     public GameObject[] movingObjects;
     public float moveSpeed = 5f;
     public float rotationSpeed = 5f;
+    public float speedMultiplier = 0.1f;
+    public float maxSpeed = 10f;
     public int[] stopWaypointIndices;
     public bool resetObjectsOnStart = true;
     public int[] flyingWaypoints;
@@ -19,8 +21,10 @@ public class PlaneController : MonoBehaviour
     [SerializeField] UIManager uiManager;
 
     private int[] currentWaypointIndex;
+    private float[] currentSpeed;
     private bool[] isStopped;
     private Rigidbody[] rigidbodies;
+    
     private bool isGameOver = false;
 
     void Start()
@@ -28,7 +32,11 @@ public class PlaneController : MonoBehaviour
         currentWaypointIndex = new int[movingObjects.Length];
         isStopped = new bool[movingObjects.Length];
         rigidbodies = new Rigidbody[movingObjects.Length];
-
+        currentSpeed = new float[movingObjects.Length];
+        for (int i = 0; i < movingObjects.Length; i++)
+        {
+            currentSpeed[i] = moveSpeed; // Start with default moveSpeed
+        }
         for (int i = 0; i < movingObjects.Length; i++)
         {
             if (movingObjects[i] != null && waypoints.Length > 0)
@@ -66,6 +74,11 @@ public class PlaneController : MonoBehaviour
                 {
                     MoveObject(movingObjects[i], i);
                 }
+                else
+                {
+                    rigidbodies[i].velocity = Vector3.zero;
+                    currentSpeed[i] = 0f;
+                }
             }
         }
 
@@ -92,8 +105,12 @@ public class PlaneController : MonoBehaviour
 
             if (!isStopped[index])
             {
+                // Increase speed over time but clamp it to maxSpeed
+                currentSpeed[index] += speedMultiplier * Time.fixedDeltaTime;
+                currentSpeed[index] = Mathf.Clamp(currentSpeed[index], moveSpeed, maxSpeed);
+            
                 Vector3 direction = (targetPosition - obj.transform.position).normalized;
-                rigidbodies[index].velocity = direction * moveSpeed;
+                rigidbodies[index].velocity = direction * currentSpeed[index];
 
                 if (Array.Exists(flyingWaypoints, w => w == currentWaypointIndex[index]))
                 {
@@ -106,16 +123,10 @@ public class PlaneController : MonoBehaviour
 
                 if (direction != Vector3.zero) 
                 {
-                    // Calculate the target rotation based on direction
                     Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-                    // Apply the base rotation of (-90,0,0)
                     targetRotation *= Quaternion.Euler(-90, 0, 0);
-
-                    // Smoothly rotate towards the target rotation
                     obj.transform.rotation = Quaternion.Slerp(obj.transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
                 }
-
 
                 if (Vector3.Distance(obj.transform.position, targetPosition) < 0.5f)
                 {
@@ -130,6 +141,19 @@ public class PlaneController : MonoBehaviour
                     }
                 }
             }
+
+            if (isStopped[index])
+            {
+                rigidbodies[index].velocity = Vector3.zero;
+                currentSpeed[index] = moveSpeed; // Reset speed when stopping
+            }
+            else
+            {
+                // Gradually increase speed if the object is moving
+                currentSpeed[index] += speedMultiplier * Time.fixedDeltaTime;
+                currentSpeed[index] = Mathf.Clamp(currentSpeed[index], moveSpeed, maxSpeed);
+            }
+
         }
     }
 
@@ -141,6 +165,7 @@ public class PlaneController : MonoBehaviour
             {
                 currentWaypointIndex[i] = targetWaypointIndex + 1;
                 isStopped[i] = false;
+                currentSpeed[i] = moveSpeed;
             }
         }
         UpdateButtonStates();
