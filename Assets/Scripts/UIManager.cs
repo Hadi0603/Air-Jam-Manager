@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
         levelWonUI.gameObject.SetActive(true);
         StopCoroutine(TimerCountdown());
         Destroy(timerText);
-        if (GameManager.levelToLoad < 5)
+        if (GameManager.levelToLoad < 6)
         {
             PlayerPrefs.SetInt("levelToLoad", ++GameManager.levelToLoad);
         }
