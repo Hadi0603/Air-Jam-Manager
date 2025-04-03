@@ -1,0 +1,4 @@
+NAME : Air Jam Manager
+PACKAGE NAME : com.ajm.airjammanager
+KEYSTORE PASSWORD : Airi@dev01
+KEYSTORE/ ALIAS/ COMPANY NAME : AJM
