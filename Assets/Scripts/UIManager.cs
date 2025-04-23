@@ -17,11 +17,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject pauseBtn;
     [FormerlySerializedAs("planeMover")] [SerializeField] private GameObject planeController;
     private bool isBlinking = false;
-    private bool isPaused = false;
+    [HideInInspector]
+    public bool isPaused = false;
     
     public void Awake()
     {
-        Time.timeScale = 1f;
+        levelWonUI.alpha = 0f;
+        winPanel.transform.localPosition = new Vector2(0, +Screen.height);
+        levelLostUI.alpha = 0f;
+        lostPanel.transform.localPosition = new Vector2(0, +Screen.height);
+        pauseUI.alpha = 0f;
+        pausePanel.transform.localPosition = new Vector2(0, +Screen.height);
         StartCoroutine(TimerCountdown());
     }
     
@@ -29,7 +35,7 @@ public class UIManager : MonoBehaviour
     {
         while (gameTime > 0)
         {
-            if (!isPaused) // Only update the timer if the game is not paused
+            if (!isPaused && timerText != null) // Only update the timer if the game is not paused
             {
                 gameTime -= Time.deltaTime;
                 UpdateTimerDisplay();
@@ -39,6 +45,7 @@ public class UIManager : MonoBehaviour
                     StartCoroutine(BlinkTimer());
                 }
             }
+
             yield return null;
         }
 
@@ -69,8 +76,11 @@ public class UIManager : MonoBehaviour
     public void TriggerGameWon()
     {
         levelWonUI.gameObject.SetActive(true);
+        levelWonUI.LeanAlpha(1, 0.5f);
+        pauseBtn.SetActive(false);
         StopCoroutine(TimerCountdown());
         Destroy(timerText);
+        winPanel.LeanMoveLocalY(0, 0.5f).setEaseOutExpo().delay = 0.1f;
         if (GameManager.levelToLoad < 6)
         {
             PlayerPrefs.SetInt("levelToLoad", ++GameManager.levelToLoad);
@@ -80,23 +90,32 @@ public class UIManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Time's up! Game Over.");
-        planeController.SetActive(false);
+        pauseBtn.SetActive(false);
         levelLostUI.gameObject.SetActive(true);
         timerText.enabled = false;
+        levelLostUI.LeanAlpha(1, 0.5f);
+        lostPanel.LeanMoveLocalY(0, 0.5f).setEaseOutExpo().delay = 0.1f;
+        planeController.SetActive(false);
     }
     public void OpenPauseMenu()
     {
         pauseUI.gameObject.SetActive(true);
+        pauseUI.LeanAlpha(1, 0.5f);
         pauseBtn.SetActive(false);
+        pausePanel.LeanMoveLocalY(0, 0.5f).setEaseOutExpo().delay = 0.1f;
         isPaused = true;
-        Time.timeScale = 0f;
     }
 
     public void ClosePauseMenu()
     {
-        Time.timeScale = 1f;
-        pauseUI.gameObject.SetActive(false);
+        pauseUI.LeanAlpha(0, 0.5f);
+        pausePanel.LeanMoveLocalY(+Screen.height, 0.5f).setEaseInExpo();
         pauseBtn.SetActive(true);
         isPaused = false;
+        Invoke(nameof(DisablePauseUI), 0.5f);
+    }
+    private void DisablePauseUI()
+    {
+        pauseUI.gameObject.SetActive(false);
     }
 }
